@@ -1,0 +1,12 @@
+# Multi-staged dockerfile for build in one image
+# and run in another tiny
+FROM node:latest as build
+
+ADD package.json /app/package.json
+WORKDIR /app
+RUN npm install
+COPY . /app
+RUN npm run build
+
+FROM nginx:1-alpine
+COPY --from=build /app/dist/teste-stayapp-marketplace /usr/share/nginx/html
