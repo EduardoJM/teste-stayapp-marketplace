@@ -1,0 +1,117 @@
+<div class="page-root">
+    <header class="add-product-header">
+        <h1 class="text-center">Adicionar Novo Produto</h1>
+    </header>
+    <main class="container">
+
+        <form #productForm="ngForm">
+            <div class="form-group">
+                <label for="name">Nome <strong>*</strong>:</label>
+                <input
+                    [(ngModel)]="product.name"
+                    required
+                    #productName="ngModel"
+                    [ngClass]="{'is-invalid': productName.invalid}"
+                    class="form-control"
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="O nome do seu produto"
+                />
+                <div class="invalid-feedback">
+                    <span>Nome do produto é obrigatório.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Descrição</label>
+                <textarea
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    [(ngModel)]="product.description"
+                    placeholder="A descrição do seu produto"
+                ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="price">Preço <strong>*</strong>:</label>
+                <input
+                    [(ngModel)]="product.price"
+                    class="form-control"
+                    type="number"
+                    name="price"
+                    id="price"
+                    placeholder="O preço do produto"
+                    min="1"
+                    max="1000"
+                    required
+                    #productPrice="ngModel"
+                    [ngClass]="{'is-invalid': productPrice.invalid}"
+                />
+                <div class="invalid-feedback">
+                    <span>O preço do produto é obrigatório e deve ser um número entre R$ 1,00 e R$ 1000,00.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Fotos:</label>
+                
+                <div class="imageset">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="5%">#</th>
+                                <th>Fotos</th>
+                                <th width="10%" class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of count; let index = index">
+                                <td valign="top">{{ index + 1 }}</td>
+                                <td valign="top">
+                                    <input
+                                        [name]="'image_' + index"
+                                        [(ngModel)]="product.images[index]"
+                                        type="url"
+                                        required
+                                        #imageUrl="ngModel"
+                                        [ngClass]="{'is-invalid': imageUrl.invalid}"
+                                        placeholder="Link da Foto"
+                                        class="form-control"
+                                    />
+                                    <div class="invalid-feedback">
+                                        <span>É obrigatório e deve ser um link.</span>
+                                    </div>
+                                </td>
+                                <td class="text-right" valign="top">
+                                    <button
+                                        class="btn btn-danger ml-2"
+                                        (click)="removeImage(index)"
+                                    >Remover</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <div class="text-right mt-2">
+                        <button class="btn" (click)="addImage()">Adicionar</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="submit-row mt-5">
+                <button
+                    class="btn btn-secondary mr-2"
+                    [routerLink]="['/products']"
+                >Cancelar</button>
+                <button
+                    [disabled]="productForm.invalid"
+                    type="submit"
+                    class="btn btn-primary"
+                    (click)="save()"
+                >Salvar</button>
+            </div>
+        </form>
+
+    </main>
+</div>
