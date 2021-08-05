@@ -4,6 +4,10 @@
     </header>
     <main class="container">
 
+        <alert type="danger" *ngIf="error">
+            <strong>Ops...</strong> {{ error }}
+        </alert>          
+
         <form #productForm="ngForm">
             <div class="form-group">
                 <label for="name">Nome <strong>*</strong>:</label>
