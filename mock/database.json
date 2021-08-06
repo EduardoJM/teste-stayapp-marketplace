@@ -6,17 +6,9 @@
       "description": "Esse é o cafezão de testes",
       "price": 19.77,
       "images": [
-        "https://static1.conquistesuavida.com.br/articles//2/65/42/@/20797-antes-vilao-agora-um-grande-aliado-da-s-article_gallery-5.jpg"
+        "https://static1.conquistesuavida.com.br/articles//2/65/42/@/20797-antes-vilao-agora-um-grande-aliado-da-s-article_gallery-5.jpg",
+        "https://cafetrampolim.com.br/wp-content/uploads/2020/03/cafe_cafeteria_graos.png"
       ]
-    },
-    {
-      "name": "Café de Teste 2",
-      "description": "Adicionar uma descrição",
-      "price": 29.9,
-      "images": [
-        "https://fazendaventurim.com.br/wp-content/uploads/2020/05/cafe-todo-dia-1200x480.jpg"
-      ],
-      "id": 2
     }
   ]
 }

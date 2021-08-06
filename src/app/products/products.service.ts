@@ -11,9 +11,17 @@ export class ProductService {
 
     constructor(private httpClient: HttpClient) {
     }
+
+    retrieveAll(): Observable<Product[]> {
+        return this.httpClient.get<Product[]>(this.url);
+    }
     
     retrieveById(id: number): Observable<Product> {
         return this.httpClient.get<Product>(`${this.url}/${id}`);
+    }
+
+    deleteById(id: number): Observable<any> {
+        return this.httpClient.delete(`${this.url}/${id}`);
     }
     
     save(product: Product): Observable<Product> {

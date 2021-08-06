@@ -1,1 +1,65 @@
-<h1>Lista de Produtos</h1>
+<div class="page-root">
+    <header class="add-product-header">
+        <h1 class="text-center">Meus Produtos</h1>
+    </header>
+    <main class="container">
+
+        <alert type="danger" *ngIf="error">
+            <strong>Ops...</strong> {{ error }}
+        </alert>
+
+        <table class="table table-light table-striped table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Fotos</th>
+                    <th scope="col">Avaliação</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products;">
+                    <th scope="row">{{ product.name }}</th>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price|price }}</td>
+                    <td>
+                        <div class="carousel-container">
+                            <carousel>
+                                <slide *ngFor="let img of product.images;">
+                                    <img [src]="img" style="display: block; width: 100%;" />
+                                </slide>
+                            </carousel>
+                        </div>
+                    </td>
+                    <td>
+                        <rating [(ngModel)]="rate_test_now" [max]="5" [readonly]="true"></rating>
+                    </td>
+                    <td>
+                        <button [routerLink]="['/products/' + product.id]" class="btn btn-primary mr-2">Editar</button>
+                        <button class="btn btn-danger" (click)="delete(template, product)">Deletar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirmar</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Quer mesmo remover o produto<strong *ngIf="deleteProduct"> {{ deleteProduct.name }}</strong>?</p>
+        
+        <div class="text-right">
+            <button type="button" class="btn btn-primary" (click)="declineDelete()">Não</button>
+            <button type="button" class="btn btn-default" (click)="confirmDelete()">Sim</button>
+        </div>
+    </div>
+</ng-template>  

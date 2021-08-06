@@ -1,0 +1,133 @@
+@mixin absolute-fit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@mixin flex-column($align) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    justify-content: center;
+}
+
+.phone-block {
+    background-color: var(--theme-color);
+    
+    .phone {
+        padding: 20px 40px;
+
+        .phone-container {
+            width: 100%;
+            aspect-ratio: 9/16;
+            position: relative;
+
+            .phone-content {
+                @include absolute-fit;
+                z-index: 40;
+                transition: all 0.3s ease;
+            }
+            img.phone-content {
+                height: 95%;
+                width: auto;
+                margin: 0 auto;
+            }
+
+            .phone-frame {
+                @include absolute-fit;
+                z-index: 50;
+                background: url(../../assets/phone.svg) no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+        }
+    }
+
+    .description {
+        padding: 20px 40px;
+
+        > div {
+            width: 100%;
+            height: 100%;
+            @include flex-column(center);
+
+            .buttons {
+                @include flex-column(center);
+            }
+        }
+    }
+
+    .phone-steps {
+        padding: 20px 40px;
+
+        > div {
+            width: 100%;
+            height: 100%;
+            @include flex-column(stretch);
+
+            button.step {
+                outline: none;
+                background: transparent;
+                border: none;
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+
+                opacity: 0.6;
+
+                .number {
+                    font-weight: bold;
+                    border: 2px solid var(--theme-foreground);
+
+                    display: block;
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 32px;
+                    
+                    margin-right: 10px;
+                    @include flex-column(center);
+
+                    transition: all 0.5s ease;
+                }
+                .text {
+                    font-weight: bold;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &.active {
+                    opacity: 1;
+
+                    .number {
+                        background: var(--theme-foreground);
+                        color: var(--theme-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .phone-block {
+        .phone-steps {
+            > div {
+                flex-direction: row;
+                justify-content: space-evenly;
+                
+                button.step {
+                    flex-direction: column;
+
+                    .number {
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
