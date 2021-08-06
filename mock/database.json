@@ -1,14 +1,1 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "Café de Teste",
-      "description": "Esse é o cafezão de testes",
-      "price": 19.77,
-      "images": [
-        "https://static1.conquistesuavida.com.br/articles//2/65/42/@/20797-antes-vilao-agora-um-grande-aliado-da-s-article_gallery-5.jpg",
-        "https://cafetrampolim.com.br/wp-content/uploads/2020/03/cafe_cafeteria_graos.png"
-      ]
-    }
-  ]
-}
+{"products": [{"id": 1, "name": "Caf\u00e9 de Teste", "description": "Esse \u00e9 o cafez\u00e3o de testes", "price": 19.77, "images": ["https://static1.conquistesuavida.com.br/articles//2/65/42/@/20797-antes-vilao-agora-um-grande-aliado-da-s-article_gallery-5.jpg", "https://cafetrampolim.com.br/wp-content/uploads/2020/03/cafe_cafeteria_graos.png"]}, {"name": "Novo Cafez\u00e3o", "description": "Meu Novo Caf\u00e9", "price": 144.0, "images": ["https://img.itdg.com.br/tdg/images/blog/uploads/2017/05/shutterstock_529515136.jpg"], "id": 2}]}
