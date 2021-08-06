@@ -8,7 +8,7 @@
             <strong>Ops...</strong> {{ error }}
         </alert>
 
-        <table class="table table-light table-striped table-hover">
+        <table class="table table-responsive table-light table-striped table-hover">
             <thead class="table-primary">
                 <tr>
                     <th scope="col">Produto</th>
@@ -34,11 +34,15 @@
                         </div>
                     </td>
                     <td>
-                        <rating [(ngModel)]="rate_test_now" [max]="5" [readonly]="true"></rating>
+                        <div class="rating-container">
+                            <rating [(ngModel)]="rate_test_now" [max]="5" [readonly]="true"></rating>
+                        </div>
                     </td>
                     <td>
-                        <button [routerLink]="['/products/' + product.id]" class="btn btn-primary mr-2">Editar</button>
-                        <button class="btn btn-danger" (click)="delete(template, product)">Deletar</button>
+                        <div class="buttons-container">
+                            <button [routerLink]="['/products/' + product.id]" class="btn btn-primary mr-2">Editar</button>
+                            <button class="btn btn-danger" (click)="delete(template, product)">Deletar</button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
