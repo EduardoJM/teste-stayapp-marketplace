@@ -38,7 +38,7 @@
             .phone-frame {
                 @include absolute-fit;
                 z-index: 50;
-                background: url(../../assets/phone.svg) no-repeat;
+                background: url(../../../assets/phone.svg) no-repeat;
                 background-position: center;
                 background-size: contain;
             }
