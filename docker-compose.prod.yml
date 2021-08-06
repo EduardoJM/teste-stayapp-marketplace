@@ -1,0 +1,28 @@
+version: '3.3'
+
+networks:
+  stayapp:
+    driver: bridge
+
+services:
+  mockup:
+    build: ./mock/
+    volumes:
+      - ./mock/database.json:/app/database.json
+    networks:
+      - stayapp
+    ports:
+      - 8000:8000
+
+  client_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    volumes:
+      - ./:/app/
+    networks:
+      - stayapp
+    ports:
+      - 4200:80
+    depends_on:
+      - mockup
