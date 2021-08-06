@@ -9,6 +9,7 @@ services:
     build: ./mock/
     volumes:
       - ./mock/database.json:/app/database.json
+      - ./mock/main.py:/app/main.py
     networks:
       - stayapp
     ports:

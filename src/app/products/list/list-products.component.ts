@@ -25,8 +25,6 @@ export class ListProductsComponent implements OnInit {
     deleteProduct: Product | null = null;
     error?: string = undefined;
 
-    rate_test_now: number = 3; // TODO: get this from mocked data
-    
     constructor(
         private productService: ProductService,
         private modalService: BsModalService,

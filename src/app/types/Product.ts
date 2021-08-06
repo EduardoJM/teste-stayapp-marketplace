@@ -5,6 +5,7 @@ export interface Product {
     description: string;
     price: number;
     images: string[];
+    rating?: number;
 }
 
 export const ProductEmpty : Product = {

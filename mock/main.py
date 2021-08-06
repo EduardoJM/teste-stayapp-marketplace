@@ -1,4 +1,5 @@
 import json
+import random
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,7 +19,14 @@ def retrieve_all_products():
     file = open('./database.json', 'r')
     json_file = json.load(file)
     file.close()
-    return json_file['products']
+    new_products = []
+    products = json_file['products']
+    for product in products:
+        new_products += [{
+            **product,
+            'rating': round(random.random() * 5, 2)
+        }]
+    return new_products
 
 @app.get("/products/{id}")
 def retrieve_product_by_id(id: int):
@@ -28,7 +36,10 @@ def retrieve_product_by_id(id: int):
     products = json_file['products']
     for product in products:
         if product['id'] == id:
-            return product
+            return {
+                **product,
+                'rating': round(random.random() * 5, 2)
+            }
     raise HTTPException(status_code=404, detail="Produto não encontrado")
 
 @app.delete("/products/{id}")
