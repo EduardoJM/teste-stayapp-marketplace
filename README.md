@@ -12,7 +12,7 @@ Um market-place pode ser considerado como um sistema de loja e-commerce onde, di
 
 ### Atributos
 
-Forem escolhidas poucas propriedades para manter o foco no processo de criação e não na entidade, facilitando assim a leitura:
+Foram escolhidas poucas propriedades para manter o foco no processo de criação e não na entidade, facilitando assim a leitura:
 
 * **ID** - *Number/Integer* - Identificador único do produto.
 * **Nome** - *String* - O nome do produto.
@@ -25,6 +25,8 @@ Forem escolhidas poucas propriedades para manter o foco no processo de criação
 ### Informações
 
 Foi tentado manter o foco na ideia de simular, minimamente, um ambiente onde uma pessoa logada teria acesso a listagens dos seus produtos, podendo ver informações como avaliação, dos seus produtos, além de gerenciar os mesmos ou adicionar novos. Aqui foi utilizado apenas o campo de **avaliação** pela ideia de tentar manter o foco na simplicidade.
+
+Além disso, não foi tentado criar uma **"página bonitinha"** visto que isso tomaria muito mais tempo pensando em design do que criando páginas a aplicação em si, além de que o projeto tem o proposito de ser simples.
 
 Foi criada, também, uma pequena **home page** para que o projeto não ficasse com uma pagina inicial em branco.
 
@@ -118,3 +120,5 @@ Para executar a versão de produção, porém, o parâmetro `-f` é obrigatório
 ```bash
 docker-compose -f docker-compose.prod.yml up
 ```
+
+Em ambos os casos, a api com os dados mockados estará disponível em `localhost:8000` e a aplicação angular disponível em `localhost:4200`.
