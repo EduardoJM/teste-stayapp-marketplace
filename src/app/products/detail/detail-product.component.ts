@@ -18,20 +18,22 @@ export class DetailProductComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        const rawId = this.activatedRoute.snapshot.paramMap.get('id');
-        if (!rawId) {
-            return;
-        }
-        const productId = Number(rawId);
-        this.productService.retrieveById(productId).subscribe({
-            next: (prod) => {
-                this.product = prod;
-                this.count = new Array(this.product.images.length);
-            },
-            error: () => {
-                this.error = "Não foi possível obter os dados do servidor!";
+        const rawId = this.activatedRoute.paramMap.subscribe((map) => {
+            const rawId = map.get('id');
+            if (!rawId) {
+                return;
             }
-        })
+            const productId = Number(rawId);
+            this.productService.retrieveById(productId).subscribe({
+                next: (prod) => {
+                    this.product = prod;
+                    this.count = new Array(this.product.images.length);
+                },
+                error: () => {
+                    this.error = "Não foi possível obter os dados do servidor!";
+                }
+            });
+        });
     }
 
     save(): void {
