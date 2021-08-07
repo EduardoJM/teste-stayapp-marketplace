@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./:/app/
+      - ./src:/app/src
     networks:
       - stayapp
     ports:
